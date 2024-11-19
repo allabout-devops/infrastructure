@@ -1,13 +1,29 @@
-name: Manual Trigger Workflow
+name: New Account Onboarding
 
 on:
   workflow_dispatch:
     # You can define inputs here if you need the user to provide specific values
     inputs:
-      example_input:
-        description: 'Example input for manual trigger'
+      vpc_cidr:
+        description: 'VPC CIDR range'
         required: true
         type: string
+      project_name:
+        description: 'Project  name'
+        required: true
+        type: string
+      environment:
+        description: 'Environment'
+        required: true
+        type: string
+      eks_control_private:
+        description: 'EKS Control Plane Private Subnet CIDR'
+        required: true
+        type: boolean
+      db_subnet:
+        description: "DB subnet required ? (NAT gateway won't attached)"
+        required: true
+        type: boolean
 
 jobs:
   manual_job:
@@ -16,4 +32,4 @@ jobs:
     steps:
     - name: Print the input value
       run: |
-        echo "The input value is: ${{ github.event.inputs.example_input }}"
+        echo "The input value is: ${{ github.event.inputs.db_subnet }}"
