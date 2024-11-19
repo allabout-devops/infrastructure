@@ -1,0 +1,19 @@
+name: Manual Trigger Workflow
+
+on:
+  workflow_dispatch:
+    # You can define inputs here if you need the user to provide specific values
+    inputs:
+      example_input:
+        description: 'Example input for manual trigger'
+        required: true
+        type: string
+
+jobs:
+  manual_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print the input value
+      run: |
+        echo "The input value is: ${{ github.event.inputs.example_input }}"
