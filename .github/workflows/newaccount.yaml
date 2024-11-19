@@ -33,3 +33,13 @@ jobs:
     - name: Print the input value
       run: |
         echo "The input value is: ${{ github.event.inputs.db_subnet }}"
+        echo "VPC CIDR: ${{ github.event.inputs.vpc_cidr }}"
+        echo "Project Name: ${{ github.event.inputs.project_name }}"
+        echo "Environment: ${{ github.event.inputs.environment }}"
+        echo "EKS Control Plane Publicly Available: ${{ github.event.inputs.eks_control_public }}"
+        if ${{ github.event.inputs.eks_control_public }} == true
+        then
+          echo "EKS Control Plane will be publicly available"
+        else
+          echo "EKS Control Plane will not be publicly available"
+        fi
